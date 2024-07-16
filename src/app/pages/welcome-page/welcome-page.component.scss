@@ -1,0 +1,18 @@
+.welcome {
+  margin: 50px 70px 34px 105px;
+  text-align: center;
+
+  &__title {
+    font-size: 52px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 72px; 
+  }
+
+  &__paragraph {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 36px;
+  }
+}

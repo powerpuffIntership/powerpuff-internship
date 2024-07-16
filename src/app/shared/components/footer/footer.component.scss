@@ -1,9 +1,80 @@
-.footer-wrapper {
+.footer {
+  height: 300px;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background-color: #1E324F;
+  
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 
-  &__links-container {
-    
-    &--link {
+    padding: 10px 156px 0 156px;
+    color: white;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
 
+    &__column {
+      margin-right: 30px;
+      max-width: 262px;
+
+      &__title {
+        border-bottom: 1px solid white;
+        max-width: 250px;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      &__icon {
+        display: flex;
+        cursor: pointer;
+
+        &--twitter {
+          width: 20px;
+          height: 20px;
+          background-repeat: no-repeat;
+          margin-right: 20px;
+          background-image: url(../../../../assets/icons/twitter.svg);
+        }
+
+        &--instagram {
+          width: 19px;
+          height: 20px;
+          margin-right: 20px;
+          background-repeat: no-repeat;
+          background-image: url(../../../../assets/icons/instagram.svg);
+        }
+
+        &--linkedin {
+          width: 20px;
+          height: 19px;
+          background-repeat: no-repeat;
+          background-image: url(../../../../assets/icons/linkedin.svg);
+        }
+      }
     }
+  }
+
+  &__logo {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 156px;
+
+    &__image {
+      width: 141.732px;
+      height: 21.702px;
+      background-image: url(../../../../assets/images/logo_white.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    };
   }
 }
