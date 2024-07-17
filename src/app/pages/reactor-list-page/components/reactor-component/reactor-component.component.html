@@ -1,3 +1,8 @@
-Reactor 1
-<app-power-production-chart></app-power-production-chart>
-<app-core-temperature-chart></app-core-temperature-chart>
+<div class="reactor-component">
+  <h2>{{reactorModel.name}}</h2>
+  <div class="reactor-component__description">
+    <h4>{{reactorModel.description}}</h4>
+  </div>
+  <app-power-production-chart [chartData]="reactorModel.reactorPowerProduction"></app-power-production-chart>
+  <app-core-temperature-chart [chartData]="reactorModel.reactorCoreTemperature"></app-core-temperature-chart>
+</div>

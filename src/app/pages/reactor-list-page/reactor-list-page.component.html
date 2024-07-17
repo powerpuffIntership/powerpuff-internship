@@ -1,9 +1,8 @@
 <div class="reactor-list-page">
   <h1>Our reactors</h1>
-
-<ng-container *ngFor="let ele of items">
-  <app-reactor-component>
-
+<h4 class="reactor-list-page__description">{{description}}</h4>
+<ng-container *ngFor="let reactor of reactors">
+  <app-reactor-component class="reactor-list-page__reactors" [reactorModel]="reactor" >
   </app-reactor-component>
 </ng-container>
 </div>
