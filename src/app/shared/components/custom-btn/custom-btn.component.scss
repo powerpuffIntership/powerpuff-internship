@@ -1,14 +1,11 @@
-.button {
-  width: 24rem;
-  height: 5.2rem;
-  background-color: #FFDA00;
-  border-radius: 2.8rem;
+@import "variables";
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
+.button {
+  background-color: $sollor-yellow;
+  border-radius: 3rem;
+  padding: 1.5rem 4rem;
   cursor: pointer;
-  font-size: 1.8rem;
-  font-weight: 500
+  font-size: $font-size-m;
+  border: none;
+  font-weight: 500;
 }
