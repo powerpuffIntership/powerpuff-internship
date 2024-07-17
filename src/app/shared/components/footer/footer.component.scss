@@ -1,5 +1,5 @@
 .footer {
-  height: 300px;
+  height: 30rem;
   width: 100%;
   position: fixed;
   left: 0;
@@ -10,22 +10,22 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 
-    padding: 10px 156px 0 156px;
+    padding: 1rem 15.6rem 0 15.6rem;
     color: white;
-    font-size: 12px;
+    font-size: 1.2rem;
     font-style: normal;
     font-weight: 400;
-    line-height: 20px;
+    line-height: 2rem;
 
     &__column {
-      margin-right: 30px;
-      max-width: 262px;
+      margin-right: 3rem;
+      max-width: 26.2rem;
 
       &__title {
         border-bottom: 1px solid white;
-        max-width: 250px;
-        margin-bottom: 10px;
-        padding-bottom: 10px;
+        max-width: 25rem;
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
       }
 
       ul {
@@ -38,24 +38,24 @@
         cursor: pointer;
 
         &--twitter {
-          width: 20px;
-          height: 20px;
+          width: 2rem;
+          height: 2rem;
           background-repeat: no-repeat;
-          margin-right: 20px;
+          margin-right: 2rem;
           background-image: url(../../../../assets/icons/twitter.svg);
         }
 
         &--instagram {
-          width: 19px;
-          height: 20px;
-          margin-right: 20px;
+          width: 1.9rem;
+          height: 2rem;
+          margin-right: 2rem;
           background-repeat: no-repeat;
           background-image: url(../../../../assets/icons/instagram.svg);
         }
 
         &--linkedin {
-          width: 20px;
-          height: 19px;
+          width: 2rem;
+          height: 1.9rem;
           background-repeat: no-repeat;
           background-image: url(../../../../assets/icons/linkedin.svg);
         }
@@ -66,11 +66,11 @@
   &__logo {
     display: flex;
     justify-content: flex-end;
-    padding: 0 156px;
+    padding: 0 15.6rem;
 
     &__image {
-      width: 141.732px;
-      height: 21.702px;
+      width: 14.1rem;
+      height: 2.1702rem;
       background-image: url(../../../../assets/images/logo_white.svg);
       background-repeat: no-repeat;
       background-position: center;
