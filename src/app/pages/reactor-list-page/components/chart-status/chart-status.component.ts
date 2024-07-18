@@ -1,8 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Status } from "../../../../shared/models/status.enum";
-import { CommonModule, NgSwitchCase } from "@angular/common";
-import _default from "chart.js/dist/plugins/plugin.legend";
-import title = _default.defaults.title;
+import { CommonModule } from "@angular/common";
 
 @Component({
   selector: 'app-chart-status',

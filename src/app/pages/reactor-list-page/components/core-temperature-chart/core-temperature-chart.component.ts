@@ -3,8 +3,6 @@ import { Status } from "../../../../shared/models/status.enum";
 import { Chart } from "chart.js/auto";
 import { ChartStatusComponent } from "../chart-status/chart-status.component";
 import { ChartService } from "../../services/chart.service";
-import _default from "chart.js/dist/plugins/plugin.tooltip";
-import numbers = _default.defaults.animations.numbers;
 
 @Component({
   selector: 'app-core-temperature-chart',
