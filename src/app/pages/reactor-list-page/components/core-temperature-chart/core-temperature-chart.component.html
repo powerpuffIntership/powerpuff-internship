@@ -1,1 +1,4 @@
-<p>core-temperature-chart works!</p>
+<div class="core-temperature-chart">
+  <canvas  class="core-temperature-chart__canvas" id="core-temperature-chart{{reactorId}}" >{{ chart }}</canvas>
+  <app-chart-status [status]="reactorStatus"></app-chart-status>
+</div>

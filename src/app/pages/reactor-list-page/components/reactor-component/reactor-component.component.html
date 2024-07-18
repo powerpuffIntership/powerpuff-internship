@@ -1,8 +1,17 @@
 <div class="reactor-component">
-  <h2>{{reactorModel.name}}</h2>
+  <h2 class="reactor-component__name">{{reactorModel.name}}</h2>
   <div class="reactor-component__description">
-    <h4>{{reactorModel.description}}</h4>
+    <span>{{reactorModel.description}}</span>
   </div>
-  <app-power-production-chart [chartData]="reactorModel.reactorPowerProduction"></app-power-production-chart>
-  <app-core-temperature-chart [chartData]="reactorModel.reactorCoreTemperature"></app-core-temperature-chart>
+  <div class="reactor-component__charts-container">
+    <app-power-production-chart class="reactor-component__charts-container__chart"
+                                [chartData]="reactorModel.reactorPowerProduction"
+                                [reactorId]="reactorModel.id"
+                                  [reactorStatus]="reactorModel.status.powerProdStatus">
+    </app-power-production-chart>
+    <app-core-temperature-chart class="reactor-component__charts-container__chart"
+                                [chartData]="reactorModel.reactorCoreTemperature"
+                                [reactorId]="reactorModel.id"  [reactorStatus]="reactorModel.status.coreTempStatus">
+    </app-core-temperature-chart>
+  </div>
 </div>

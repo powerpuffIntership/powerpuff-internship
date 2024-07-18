@@ -1,3 +1,5 @@
 <div class="power-production-chart">
-  <canvas  id="canvas" >{{ chart }}</canvas>
+  <canvas class="power-production-chart__canvas" id="powerProductionChart{{reactorId}}" >{{ chart }}</canvas>
+  <app-chart-status [status]="reactorStatus"></app-chart-status>
+
 </div>

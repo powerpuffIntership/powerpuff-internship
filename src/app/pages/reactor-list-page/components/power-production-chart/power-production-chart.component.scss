@@ -1,5 +1,9 @@
 @import "variables";
+
 .power-production-chart{
-  background-color: $light-blue ;
-  padding: 2rem;
+
+  &__canvas{
+    max-height: 40rem;
+    background-color: $light-blue ;
+  }
 }
