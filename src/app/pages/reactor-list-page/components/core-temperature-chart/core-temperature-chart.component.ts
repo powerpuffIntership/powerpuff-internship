@@ -2,6 +2,9 @@ import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { Status } from "../../../../shared/models/status.enum";
 import { Chart } from "chart.js/auto";
 import { ChartStatusComponent } from "../chart-status/chart-status.component";
+import { ChartService } from "../../services/chart.service";
+import _default from "chart.js/dist/plugins/plugin.tooltip";
+import numbers = _default.defaults.animations.numbers;
 
 @Component({
   selector: 'app-core-temperature-chart',
@@ -17,26 +20,25 @@ export class CoreTemperatureChartComponent implements AfterViewInit {
   @Input() reactorId = '';
   @Input() reactorStatus = Status.inRange;
   chart: any = [];
-  colors: string [] = []
-  labels: number[] = [];
+  dataForChart: { colors: string[], labels: number[] };
 
-  constructor() {
+  constructor(private chartService: ChartService) {
   }
 
   ngAfterViewInit() {
-    this.getColorsAndLabelsForChart();
+    this.dataForChart = this.chartService.getColorsAndLabelsForChart(this.chartData);
     this.chart = new Chart('core-temperature-chart' + this.reactorId, {
       type: 'line',
       data: {
-        labels: this.labels,
+        labels: this.dataForChart.labels,
         datasets: [
           {
             label: 'Core temperature chart',
             data: this.chartData,
-            pointBackgroundColor: this.colors,
-            pointBorderColor: this.colors,
-            borderColor: this.colors,
-            backgroundColor: this.colors,
+            pointBackgroundColor: this.dataForChart.colors,
+            pointBorderColor: this.dataForChart.colors,
+            borderColor: this.dataForChart.colors,
+            backgroundColor: this.dataForChart.colors,
             fill: false,
             tension: 0.2,
           },
@@ -78,32 +80,6 @@ export class CoreTemperatureChartComponent implements AfterViewInit {
     });
   }
 
-  getColorsAndLabelsForChart(): void {
-    if (this.chartData) {
-      let maxValue = 0
-      for (var i = 0; i < this.chartData?.length; i++) {
-        if(maxValue< this.chartData[i].time){
-          maxValue = this.chartData[i].time;
-        }
-        var color;
-        switch (this.chartData ? this.chartData[i].status : []) {
-          case Status.critical:
-            color = '#f93b18';
-            break;
-          case Status.outOfRange:
-            color = '#ffda00';
-            break;
-          case Status.inRange:
-            color = '#2071b5';
-            break;
-        }
-        this.colors.push(color!);
-      }
-      for( let i=1; i<= maxValue; i++){
-        this.labels.push(i)
-      }
-    }
-  }
 
 
 }

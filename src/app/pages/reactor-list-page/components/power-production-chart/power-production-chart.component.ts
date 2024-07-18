@@ -2,6 +2,7 @@ import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { Status } from "../../../../shared/models/status.enum";
 import { Chart } from "chart.js/auto";
 import { ChartStatusComponent } from "../chart-status/chart-status.component";
+import { ChartService } from "../../services/chart.service";
 
 @Component({
   selector: 'app-power-production-chart',
@@ -16,25 +17,25 @@ export class PowerProductionChartComponent implements AfterViewInit {
   @Input() chartData: { time: number; value: number; status: Status }[] | undefined = [];
   @Input() reactorId = '';
   @Input() reactorStatus = Status.inRange;
+  dataForChart: { colors: string[], labels: number[] };
   chart: any = [];
-  colors: string [] = []
-  labels: number[] = []
 
-  constructor() {
+
+  constructor(private chartService: ChartService) {
   }
 
   ngAfterViewInit() {
-    this.getColorsAndLabelsForChart();
+    this.dataForChart = this.chartService.getColorsAndLabelsForChart(this.chartData);
     this.chart = new Chart('powerProductionChart' + this.reactorId, {
       type: 'bar',
       data: {
-        labels: this.labels,
+        labels: this.dataForChart.labels,
         datasets: [
           {
             label: 'Power production chart',
             data: this.chartData,
             borderWidth: 1,
-            backgroundColor: this.colors,
+            backgroundColor: this.dataForChart.colors,
           },
         ],
       },
@@ -74,32 +75,6 @@ export class PowerProductionChartComponent implements AfterViewInit {
     });
   }
 
-  getColorsAndLabelsForChart(): void {
-    if (this.chartData) {
-      let maxValue = 0
-      for (var i = 0; i < this.chartData?.length; i++) {
-        if(maxValue< this.chartData[i].time){
-          maxValue = this.chartData[i].time;
-        }
-        var color;
-        switch (this.chartData ? this.chartData[i].status : []) {
-          case Status.critical:
-            color = '#f93b18';
-            break;
-          case Status.outOfRange:
-            color = '#ffda00';
-            break;
-          case Status.inRange:
-            color = '#2071b5';
-            break;
-        }
-        this.colors.push(color!);
-      }
-      for( let i=1; i<= maxValue; i++){
-        this.labels.push(i)
-      }
-    }
-  }
 
 
 }
