@@ -11,7 +11,7 @@ export class CustomBtnComponent {
   @Input() type: ButtonType = ButtonType.standard;
 
   @Output() onClick = new EventEmitter<any>();
-
+  ButtonType = ButtonType;
   onClickButton(event: any) {
     this.onClick.emit(event);
   }

@@ -1,0 +1,74 @@
+{
+    "status": {
+        "sectionInfo": "string",
+        "statusPowerProduction": "outOfRange",
+        "statusCoreTemperature": "InRange",
+        "extendedStatus": {
+            "id": "abc",
+            "name": "Reactor 1",
+            "status": "outOfRange"
+        }
+    },
+    "list": [
+        {
+            "id": "abc",
+            "name": "Reactor 1",
+            "status": "InRange",
+            "description": "Lorem ipsum dolor sit amet consectetur. Adipiscing non pulvinar placerat lorem ullamcorper magna. Pulvinar bibendum enim eget nullam lacus urna.",
+            "reactorPowerProduction": [
+                {
+                    "time": 10,
+                    "value": 256,
+                    "status": "InRange"
+                }
+            ],
+            "reactorCoreTemperature": [
+                {
+                    "time": 10,
+                    "value": 123,
+                    "status": "InRange"
+                }
+            ]
+        },
+        {
+            "id": "abc",
+            "name": "Reactor 1",
+            "status": "InRange",
+            "description": "Lorem ipsum dolor sit amet consectetur. Adipiscing non pulvinar placerat lorem ullamcorper magna. Pulvinar bibendum enim eget nullam lacus urna.",
+            "reactorPowerProduction": [
+                {
+                    "time": 10,
+                    "value": 256,
+                    "status": "InRange"
+                }
+            ],
+            "reactorCoreTemperature": [
+                {
+                    "time": 10,
+                    "value": 123,
+                    "status": "InRange"
+                }
+            ]
+        },
+        {
+            "id": "abc",
+            "name": "Reactor 1",
+            "status": "InRange",
+            "description": "Lorem ipsum dolor sit amet consectetur. Adipiscing non pulvinar placerat lorem ullamcorper magna. Pulvinar bibendum enim eget nullam lacus urna.",
+            "reactorPowerProduction": [
+                {
+                    "time": 10,
+                    "value": 256,
+                    "status": "InRange"
+                }
+            ],
+            "reactorCoreTemperature": [
+                {
+                    "time": 10,
+                    "value": 123,
+                    "status": "InRange"
+                }
+            ]
+        }
+    ]
+}

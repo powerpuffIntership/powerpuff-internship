@@ -1,7 +1,7 @@
 .welcome {
   text-align: center;
   height: 100%;
-  padding: 2rem 5rem;
+  padding: 2rem 10rem;
 
   &__title {
     font-size: 5.2rem;
@@ -15,5 +15,11 @@
     font-style: normal;
     font-weight: 500;
     line-height: 3.6rem;
+  }
+  &__status__section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    column-gap: 0.5rem;
   }
 }
