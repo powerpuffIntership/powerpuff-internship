@@ -12,23 +12,23 @@ import { ChartStatusComponent } from "../chart-status/chart-status.component";
   templateUrl: './power-production-chart.component.html',
   styleUrl: './power-production-chart.component.scss'
 })
-export class PowerProductionChartComponent implements AfterViewInit{
+export class PowerProductionChartComponent implements AfterViewInit {
   @Input() chartData: { time: number; value: number; status: Status }[] | undefined = [];
-  @Input() reactorId ='';
+  @Input() reactorId = '';
   @Input() reactorStatus = Status.inRange;
-
-  title = 'ng-chart';
   chart: any = [];
-  colors: string [] =[]
+  colors: string [] = []
+  labels: number[] = []
 
-  constructor() {}
+  constructor() {
+  }
 
   ngAfterViewInit() {
-    this.getColorsForChart();
-    this.chart = new Chart('powerProductionChart'+this.reactorId, {
+    this.getColorsAndLabelsForChart();
+    this.chart = new Chart('powerProductionChart' + this.reactorId, {
       type: 'bar',
       data: {
-        labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15],
+        labels: this.labels,
         datasets: [
           {
             label: 'Power production chart',
@@ -55,7 +55,7 @@ export class PowerProductionChartComponent implements AfterViewInit{
         plugins: {
           title: {
             display: true,
-            text: "Power production output" ,
+            text: "Power production output",
             color: '#000000',
             align: 'start',
             padding: {
@@ -74,9 +74,13 @@ export class PowerProductionChartComponent implements AfterViewInit{
     });
   }
 
-  getColorsForChart(): void{
-    if(this.chartData){
+  getColorsAndLabelsForChart(): void {
+    if (this.chartData) {
+      let maxValue = 0
       for (var i = 0; i < this.chartData?.length; i++) {
+        if(maxValue< this.chartData[i].time){
+          maxValue = this.chartData[i].time;
+        }
         var color;
         switch (this.chartData ? this.chartData[i].status : []) {
           case Status.critical:
@@ -91,9 +95,11 @@ export class PowerProductionChartComponent implements AfterViewInit{
         }
         this.colors.push(color!);
       }
+      for( let i=1; i<= maxValue; i++){
+        this.labels.push(i)
+      }
     }
-
-}
+  }
 
 
 }

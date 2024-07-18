@@ -16,24 +16,23 @@ export class CoreTemperatureChartComponent implements AfterViewInit {
   @Input() chartData: { time: number; value: number; status: Status }[] | undefined;
   @Input() reactorId = '';
   @Input() reactorStatus = Status.inRange;
-  title = 'ng-chart';
   chart: any = [];
   colors: string [] = []
+  labels: number[] = [];
 
   constructor() {
   }
 
   ngAfterViewInit() {
-    this.getColorsForChart();
+    this.getColorsAndLabelsForChart();
     this.chart = new Chart('core-temperature-chart' + this.reactorId, {
       type: 'line',
       data: {
-        labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+        labels: this.labels,
         datasets: [
           {
-            label: 'Power production chart',
+            label: 'Core temperature chart',
             data: this.chartData,
-            // borderWidth: 3,
             pointBackgroundColor: this.colors,
             pointBorderColor: this.colors,
             borderColor: this.colors,
@@ -79,9 +78,13 @@ export class CoreTemperatureChartComponent implements AfterViewInit {
     });
   }
 
-  getColorsForChart(): void {
+  getColorsAndLabelsForChart(): void {
     if (this.chartData) {
+      let maxValue = 0
       for (var i = 0; i < this.chartData?.length; i++) {
+        if(maxValue< this.chartData[i].time){
+          maxValue = this.chartData[i].time;
+        }
         var color;
         switch (this.chartData ? this.chartData[i].status : []) {
           case Status.critical:
@@ -96,8 +99,10 @@ export class CoreTemperatureChartComponent implements AfterViewInit {
         }
         this.colors.push(color!);
       }
+      for( let i=1; i<= maxValue; i++){
+        this.labels.push(i)
+      }
     }
-
   }
 
 

@@ -1,6 +1,6 @@
 <div class="chart-status">
   <div class="chart-status__container">
-  <div class="chart-status__container__label">Production output status: </div>
+  <div>{{title}}: </div>
   <div class="chart-status__container__status">
     <ng-container [ngSwitch]="status">
       <ng-container *ngSwitchCase="statuses.inRange">In range   <div class="chart-status__dot chart-status__dot--green"></div></ng-container>

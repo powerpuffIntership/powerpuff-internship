@@ -14,4 +14,6 @@
                                 [reactorId]="reactorModel.id"  [reactorStatus]="reactorModel.status.coreTempStatus">
     </app-core-temperature-chart>
   </div>
+  <app-legend [alignLeft]="true"></app-legend>
+  <app-useful-links [links]="reactorModel?.links"></app-useful-links>
 </div>

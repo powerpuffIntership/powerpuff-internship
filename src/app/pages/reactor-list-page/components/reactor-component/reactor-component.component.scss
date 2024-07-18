@@ -1,31 +1,31 @@
 @import "variables";
-.reactor-component{
+
+.reactor-component {
   width: 100%;
   text-align: center;
 
-  &__name{
+  &__name {
     margin-bottom: 1rem;
   }
 
-  &__description{
-  font-size: $font-size-l;
+  &__description {
+    font-size: $font-size-l;
     font-weight: 500;
     margin-bottom: 2rem;
   }
 
-  &__charts-container{
+  &__charts-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
     @media screen and (max-width: 1000px) {
       flex-direction: column;
-
     }
 
-    &__chart{
+    &__chart {
       width: 100%;
-      padding:1rem;
+      padding-right: 1rem;
     }
   }
 }
