@@ -27,6 +27,14 @@ export class ReactorStatusService {
           coreTempStatus: reactor.status.coreTempStatus as Status,
           powerProdStatus: reactor.status.powerProdStatus as Status,
         },
+        reactorPowerProduction: reactor.reactorPowerProduction.map((res) => ({
+          ...res,
+          status: res.status as Status,
+        })),
+        reactorCoreTemperature: reactor.reactorCoreTemperature.map((res) => ({
+          ...res,
+          status: res.status as Status,
+        })),
       }))
     );
   }

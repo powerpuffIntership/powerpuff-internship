@@ -1,30 +1,31 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import { Status } from "../../../../shared/models/status.enum";
-import { Chart } from "chart.js/auto";
-import { ChartStatusComponent } from "../chart-status/chart-status.component";
-import { ChartService } from "../../services/chart.service";
+import { Chart } from 'chart.js/auto';
+import { ChartStatusComponent } from '../chart-status/chart-status.component';
+import { ChartService } from '../../services/chart.service';
+import { Status } from '../../../../core/enums/status.enum';
 
 @Component({
   selector: 'app-core-temperature-chart',
   standalone: true,
-  imports: [
-    ChartStatusComponent
-  ],
+  imports: [ChartStatusComponent],
   templateUrl: './core-temperature-chart.component.html',
-  styleUrl: './core-temperature-chart.component.scss'
+  styleUrl: './core-temperature-chart.component.scss',
 })
 export class CoreTemperatureChartComponent implements AfterViewInit {
-  @Input() chartData: { time: number; value: number; status: Status }[] | undefined;
+  @Input() chartData:
+    | { time: number; value: number; status: Status }[]
+    | undefined;
   @Input() reactorId = '';
   @Input() reactorStatus = Status.inRange;
   chart: any = [];
-  dataForChart: { colors: string[], labels: number[] };
+  dataForChart!: { colors: string[]; labels: number[] };
 
-  constructor(private chartService: ChartService) {
-  }
+  constructor(private chartService: ChartService) {}
 
   ngAfterViewInit() {
-    this.dataForChart = this.chartService.getColorsAndLabelsForChart(this.chartData);
+    this.dataForChart = this.chartService.getColorsAndLabelsForChart(
+      this.chartData
+    );
     this.chart = new Chart('core-temperature-chart' + this.reactorId, {
       type: 'line',
       data: {
@@ -44,12 +45,12 @@ export class CoreTemperatureChartComponent implements AfterViewInit {
       },
       options: {
         layout: {
-          padding: 20
+          padding: 20,
         },
         maintainAspectRatio: false,
         parsing: {
           xAxisKey: 'time',
-          yAxisKey: 'value'
+          yAxisKey: 'value',
         },
         scales: {
           y: {
@@ -59,7 +60,7 @@ export class CoreTemperatureChartComponent implements AfterViewInit {
         plugins: {
           title: {
             display: true,
-            text: "Power production output",
+            text: 'Power production output',
             color: '#000000',
             align: 'start',
             padding: {
@@ -67,17 +68,14 @@ export class CoreTemperatureChartComponent implements AfterViewInit {
             },
             font: {
               size: 17,
-              weight: "bold"
-            }
+              weight: 'bold',
+            },
           },
           legend: {
-            display: false
-          }
+            display: false,
+          },
         },
       },
     });
   }
-
-
-
 }

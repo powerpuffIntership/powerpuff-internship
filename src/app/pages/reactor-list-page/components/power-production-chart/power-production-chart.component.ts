@@ -1,31 +1,31 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import { Status } from "../../../../shared/models/status.enum";
-import { Chart } from "chart.js/auto";
-import { ChartStatusComponent } from "../chart-status/chart-status.component";
-import { ChartService } from "../../services/chart.service";
+import { Chart } from 'chart.js/auto';
+import { ChartStatusComponent } from '../chart-status/chart-status.component';
+import { ChartService } from '../../services/chart.service';
+import { Status } from '../../../../core/enums/status.enum';
 
 @Component({
   selector: 'app-power-production-chart',
   standalone: true,
-  imports: [
-    ChartStatusComponent
-  ],
+  imports: [ChartStatusComponent],
   templateUrl: './power-production-chart.component.html',
-  styleUrl: './power-production-chart.component.scss'
+  styleUrl: './power-production-chart.component.scss',
 })
 export class PowerProductionChartComponent implements AfterViewInit {
-  @Input() chartData: { time: number; value: number; status: Status }[] | undefined = [];
+  @Input() chartData:
+    | { time: number; value: number; status: Status }[]
+    | undefined = [];
   @Input() reactorId = '';
   @Input() reactorStatus = Status.inRange;
-  dataForChart: { colors: string[], labels: number[] };
+  dataForChart!: { colors: string[]; labels: number[] };
   chart: any = [];
 
-
-  constructor(private chartService: ChartService) {
-  }
+  constructor(private chartService: ChartService) {}
 
   ngAfterViewInit() {
-    this.dataForChart = this.chartService.getColorsAndLabelsForChart(this.chartData);
+    this.dataForChart = this.chartService.getColorsAndLabelsForChart(
+      this.chartData
+    );
     this.chart = new Chart('powerProductionChart' + this.reactorId, {
       type: 'bar',
       data: {
@@ -41,12 +41,12 @@ export class PowerProductionChartComponent implements AfterViewInit {
       },
       options: {
         layout: {
-          padding: 20
+          padding: 20,
         },
         maintainAspectRatio: false,
         parsing: {
           xAxisKey: 'time',
-          yAxisKey: 'value'
+          yAxisKey: 'value',
         },
         scales: {
           y: {
@@ -56,7 +56,7 @@ export class PowerProductionChartComponent implements AfterViewInit {
         plugins: {
           title: {
             display: true,
-            text: "Power production output",
+            text: 'Power production output',
             color: '#000000',
             align: 'start',
             padding: {
@@ -64,17 +64,14 @@ export class PowerProductionChartComponent implements AfterViewInit {
             },
             font: {
               size: 17,
-              weight: "bold"
-            }
+              weight: 'bold',
+            },
           },
           legend: {
-            display: false
-          }
+            display: false,
+          },
         },
       },
     });
   }
-
-
-
 }

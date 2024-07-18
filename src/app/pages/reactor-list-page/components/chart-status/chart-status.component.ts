@@ -1,19 +1,16 @@
 import { Component, Input } from '@angular/core';
-import { Status } from "../../../../shared/models/status.enum";
-import { CommonModule } from "@angular/common";
+import { CommonModule } from '@angular/common';
+import { Status } from '../../../../core/enums/status.enum';
 
 @Component({
   selector: 'app-chart-status',
   standalone: true,
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   templateUrl: './chart-status.component.html',
-  styleUrl: './chart-status.component.scss'
+  styleUrl: './chart-status.component.scss',
 })
 export class ChartStatusComponent {
-  @Input() title: string;
-  @Input() status: Status;
+  @Input() title!: string;
+  @Input() status!: Status;
   statuses = Status;
-
 }

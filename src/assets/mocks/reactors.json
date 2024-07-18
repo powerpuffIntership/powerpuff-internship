@@ -16,13 +16,15 @@
             "reactorPowerProduction": [
                 {
                     "time": 10,
-                    "value": 256
+                    "value": 256,
+                    "status": "in-range"
                 }
             ],
             "reactorCoreTemperature": [
                 {
                     "time": 10,
-                    "value": 123
+                    "value": 123,
+                    "status": "in-range"
                 }
             ]
         }

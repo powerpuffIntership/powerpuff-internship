@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Status } from "../../../shared/models/status.enum";
+import { Status } from '../../../core/enums/status.enum';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ChartService {
+  constructor() {}
 
-  constructor() { }
-
-  getColorsAndLabelsForChart(chartData: { time: number; value: number; status: Status }[] | undefined): { colors:string[], labels: number[] } {
+  getColorsAndLabelsForChart(
+    chartData: { time: number; value: number; status: Status }[] | undefined
+  ): { colors: string[]; labels: number[] } {
     let colors = [];
     let labels = [];
     if (chartData) {
-      let maxValue = 0
+      let maxValue = 0;
       for (var i = 0; i < chartData?.length; i++) {
-        if(maxValue< chartData[i].time){
+        if (maxValue < chartData[i].time) {
           maxValue = chartData[i].time;
         }
         var color;
@@ -31,10 +32,10 @@ export class ChartService {
         }
         colors.push(color!);
       }
-      for( let i=1; i<= maxValue; i++){
-        labels.push(i)
+      for (let i = 1; i <= maxValue; i++) {
+        labels.push(i);
       }
     }
-    return{colors: colors, labels: labels}
+    return { colors: colors, labels: labels };
   }
 }

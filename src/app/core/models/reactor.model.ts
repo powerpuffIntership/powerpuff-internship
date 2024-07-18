@@ -5,9 +5,9 @@ export interface ReactorModel {
   name: string;
   status: ReactorStatus;
   description?: string;
-  reactorPowerProduction?: { time: number; value: number }[];
-  reactorCoreTemperature?: { time: number; value: number }[];
-  links?: string[];
+  reactorPowerProduction?: { time: number; value: number; status: Status }[];
+  reactorCoreTemperature?: { time: number; value: number; status: Status }[];
+  links?: { label: string; href: string }[];
 }
 
 export interface ReactorStatus {
