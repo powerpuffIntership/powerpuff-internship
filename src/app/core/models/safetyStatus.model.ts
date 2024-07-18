@@ -1,5 +1,5 @@
 import { ReactorModel } from './reactor.model';
-import { Status } from './status.enum';
+import { Status } from '../enums/status.enum';
 
 export interface SafetyStatusModel {
   sectionInfo: string;

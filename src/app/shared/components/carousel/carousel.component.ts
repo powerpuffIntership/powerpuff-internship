@@ -1,15 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  trigger,
-  transition,
-  query,
-  style,
-  animate,
-  group,
-} from '@angular/animations';
-import { ImageModel } from '../../models/image.model';
-import { ImageType } from '../../models/imageType.enum';
-import * as data from '../../../../assets/mocks/images.json';
+import { Component, Input, OnInit } from '@angular/core';
+import { ImageModel } from '../../../core/models/image.model';
+import { ImageType } from '../../../core/enums/imageType.enum';
 
 @Component({
   selector: 'app-carousel',
@@ -17,8 +8,8 @@ import * as data from '../../../../assets/mocks/images.json';
   styleUrls: ['./carousel.component.scss'],
 })
 export class CarouselComponent implements OnInit {
+  @Input() elementsList!: ImageModel[];
   counter: number = 0;
-  data: ImageModel = data;
   ImageType = ImageType;
   images = [
     'https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg',

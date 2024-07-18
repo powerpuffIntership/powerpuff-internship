@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ButtonType } from '../../models/buttonType.enum';
+import { ButtonType } from '../../../core/enums/buttonType.enum';
 
 @Component({
   selector: 'custom-btn',

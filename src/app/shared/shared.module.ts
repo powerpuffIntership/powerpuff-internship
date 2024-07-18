@@ -7,6 +7,7 @@ import { LegendComponent } from './components/legend/legend.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { ImageComponent } from './components/image/image.component';
 import { WarningComponent } from './components/warning/warning.component';
+import { NgLetDirective } from './directives/ng-let.directive';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { WarningComponent } from './components/warning/warning.component';
     CarouselComponent,
     ImageComponent,
     WarningComponent,
+    NgLetDirective,
   ],
   imports: [CommonModule],
   exports: [
@@ -27,6 +29,7 @@ import { WarningComponent } from './components/warning/warning.component';
     CarouselComponent,
     ImageComponent,
     WarningComponent,
+    NgLetDirective,
   ],
 })
 export class SharedModule {}

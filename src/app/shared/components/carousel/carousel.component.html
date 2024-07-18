@@ -1,7 +1,7 @@
 <div class="carousel">
     <div class="carousel__container">
-        <ng-container *ngFor="let img of images; let i=index">
-            <app-image [image]="data" [style]="ImageType.full" *ngIf="i == counter"></app-image>
+        <ng-container *ngFor="let img of elementsList; let i=index">
+            <app-image [image]="img" [style]="ImageType.full" *ngIf="i == counter"></app-image>
         </ng-container>
     </div>
 

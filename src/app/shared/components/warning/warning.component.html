@@ -1,8 +1,9 @@
-<div class="warning">
+<div class="warning warning--{{warningType}}">
     <div class="warning__icon-container">
         <img class="warning__icon-container__icon" src="assets/icons/alert.svg">
     </div>
-    <div class="warning__content"> Core temperature of Reactor 2 has exeeded safe levels. Urgent attention required.
+    <div class="warning__content"> {{typeOfError}}of {{ reactorName}} has exeeded safe levels. Urgent attention
+        required.
         <br>
         See details >
     </div>
