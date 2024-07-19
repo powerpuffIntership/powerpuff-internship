@@ -1,8 +1,0 @@
-<div class="reactor-list-page" *ngLet="reactors$ |async as reactors">
-  <h1 class="reactor-list-page__title">Our reactors</h1>
-  <h4 class="reactor-list-page__description">{{description}}</h4>
-  <ng-container *ngFor="let reactor of reactors">
-    <app-reactor-component class="reactor-list-page__reactors" [reactorModel]="reactor">
-    </app-reactor-component>
-  </ng-container>
-</div>
