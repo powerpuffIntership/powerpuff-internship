@@ -60,9 +60,11 @@ export class PowerProductionChartComponent implements AfterViewInit {
           yAxisKey: 'value',
         },
         scales: {
-          y: {
-            beginAtZero: true,
-          },
+          x: {
+            grid: {
+              display: false,
+            }
+          }
         },
         plugins: {
           tooltip: {
