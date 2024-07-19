@@ -67,6 +67,22 @@ export class CoreTemperatureChartComponent implements AfterViewInit {
           },
         },
         plugins: {
+          tooltip: {
+            backgroundColor: '#2071b5',
+            titleAlign: 'center',
+            bodyAlign: 'center',
+            xAlign: 'center',
+            yAlign: 'bottom',
+            padding: 8,
+            boxPadding: 3,
+            callbacks: {
+              title: function(tooltipItem){
+                return '';
+              },
+              label: function(tooltipItem){
+                return tooltipItem.formattedValue + ' ºC';
+              }
+          }},
           title: {
             display: true,
             text: 'Core temperature',
