@@ -5,12 +5,38 @@ export interface ReactorModel {
   name: string;
   status: ReactorStatus;
   description?: string;
-  reactorPowerProduction?: { time: number; value: number; status: Status }[];
-  reactorCoreTemperature?: { time: number; value: number; status: Status }[];
+  reactorPowerProduction?: ChartDataModel[];
+  reactorCoreTemperature?: ChartDataModel[];
   links?: { label: string; href: string }[];
 }
 
 export interface ReactorStatus {
   coreTempStatus: Status;
   powerProdStatus: Status;
+}
+
+export interface ChartDataModel {
+  time: number;
+  value: number;
+  status: Status;
+}
+export interface ReactorModelDTO {
+  id: string;
+  name: string;
+  status: ReactorStatus;
+  description?: string;
+  reactorPowerProduction?: ChartDataModelDTO[];
+  reactorCoreTemperature?: ChartDataModelDTO[];
+  links?: { label: string; href: string }[];
+}
+
+export interface ReactorStatusDTO {
+  coreTempStatus: string;
+  powerProdStatus: string;
+}
+
+export interface ChartDataModelDTO {
+  time: number;
+  value: number;
+  status: string;
 }

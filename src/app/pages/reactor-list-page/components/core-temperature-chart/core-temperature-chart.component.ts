@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
 import { Chart } from 'chart.js/auto';
 import { ChartStatusComponent } from '../chart-status/chart-status.component';
 import { ChartService } from '../../services/chart.service';
@@ -20,7 +26,10 @@ export class CoreTemperatureChartComponent implements AfterViewInit {
   chart: any = [];
   dataForChart!: { colors: string[]; labels: number[] };
 
-  constructor(private chartService: ChartService) {}
+  constructor(
+    private chartService: ChartService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngAfterViewInit() {
     this.dataForChart = this.chartService.getColorsAndLabelsForChart(
@@ -60,7 +69,7 @@ export class CoreTemperatureChartComponent implements AfterViewInit {
         plugins: {
           title: {
             display: true,
-            text: 'Power production output',
+            text: 'Core temperature',
             color: '#000000',
             align: 'start',
             padding: {
@@ -77,5 +86,6 @@ export class CoreTemperatureChartComponent implements AfterViewInit {
         },
       },
     });
+    this.cdr.detectChanges();
   }
 }

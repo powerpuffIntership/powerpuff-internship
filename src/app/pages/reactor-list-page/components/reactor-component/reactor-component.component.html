@@ -5,15 +5,14 @@
   </div>
   <div class="reactor-component__charts-container">
     <app-power-production-chart class="reactor-component__charts-container__chart"
-                                [chartData]="reactorModel.reactorPowerProduction"
-                                [reactorId]="reactorModel.id"
-                                  [reactorStatus]="reactorModel.status.powerProdStatus">
+      [chartData]="reactorModel.reactorPowerProduction" [reactorId]="reactorModel.id"
+      [reactorStatus]="reactorModel.status.powerProdStatus">
     </app-power-production-chart>
     <app-core-temperature-chart class="reactor-component__charts-container__chart"
-                                [chartData]="reactorModel.reactorCoreTemperature"
-                                [reactorId]="reactorModel.id"  [reactorStatus]="reactorModel.status.coreTempStatus">
+      [chartData]="reactorModel.reactorCoreTemperature" [reactorId]="reactorModel.id"
+      [reactorStatus]="reactorModel.status.coreTempStatus">
     </app-core-temperature-chart>
   </div>
   <app-legend [alignLeft]="true"></app-legend>
-  <app-useful-links [links]="reactorModel?.links"></app-useful-links>
+  <app-useful-links [links]="reactorModel.links"></app-useful-links>
 </div>

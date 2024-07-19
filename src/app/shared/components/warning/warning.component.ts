@@ -16,7 +16,6 @@ export class WarningComponent implements OnInit {
   warningType: Status = Status.outOfRange;
 
   ngOnInit() {
-    console.log(this.safetyStatus);
     if (!!this.safetyStatus) {
       this.reactorName = this.safetyStatus.extendedStatus?.name;
       if (this.safetyStatus.statusCoreTemperature !== Status.inRange) {
