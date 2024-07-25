@@ -8,6 +8,13 @@ export interface ReactorsStateModel {
   reactorsImages: ImageModel[];
   locationsImage?: ImageModel;
 
-  loading: boolean;
-  error: boolean;
+  loadingReactors: boolean;
+  loadingSafetyStatus: boolean;
+  loadingReactorsImages: boolean;
+  loadingLocationImage: boolean;
+
+  errorReactors: boolean;
+  errorSafetyStatus: boolean;
+  errorReactorsImages: boolean;
+  errorLocationImage: boolean;
 }

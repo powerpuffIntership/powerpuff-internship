@@ -7,6 +7,8 @@ import { ImageComponent } from './components/image/image.component';
 import { WarningComponent } from './components/warning/warning.component';
 import { NgLetDirective } from './directives/ng-let.directive';
 import { HttpClientModule } from '@angular/common/http';
+import { LoaderComponent } from './components/loader/loader.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -16,8 +18,9 @@ import { HttpClientModule } from '@angular/common/http';
     ImageComponent,
     WarningComponent,
     NgLetDirective,
+    LoaderComponent,
   ],
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, MatProgressSpinnerModule],
   exports: [
     CustomBtnComponent,
     LegendComponent,
@@ -26,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     WarningComponent,
     NgLetDirective,
     HttpClientModule,
+    LoaderComponent,
   ],
 })
 export class SharedModule {}

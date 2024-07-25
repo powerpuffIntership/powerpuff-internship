@@ -42,6 +42,15 @@ export class WelcomePageComponent implements OnInit {
     ReactorsState.getReactorsImageList
   );
 
+  safetyStatusLoading$: Observable<boolean> = this.store.select(
+    ReactorsState.loadingSafetyStatus
+  );
+  locationImageLoading$: Observable<boolean> = this.store.select(
+    ReactorsState.loadingLocationImage
+  );
+  reactorListLoading$: Observable<boolean> = this.store.select(
+    ReactorsState.loadingReactorsImages
+  );
   constructor(private store: Store) {}
 
   ngOnInit() {

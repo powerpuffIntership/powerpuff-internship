@@ -24,8 +24,14 @@ import { ImageModel } from '../../core/models/image.model';
     reactorsImages: [],
     reactorsSafetyStatus: undefined,
     locationsImage: undefined,
-    loading: false,
-    error: false,
+    loadingLocationImage: false,
+    loadingReactors: false,
+    loadingReactorsImages: false,
+    loadingSafetyStatus: false,
+    errorLocationImage: false,
+    errorReactors: false,
+    errorReactorsImages: false,
+    errorSafetyStatus: false,
   },
 })
 @Injectable()
@@ -57,26 +63,58 @@ export class ReactorsState {
   }
 
   @Selector()
-  static loading(state: ReactorsStateModel): boolean {
-    return state.loading;
+  static loadingReactors(state: ReactorsStateModel): boolean {
+    return state.loadingReactors;
   }
 
   @Selector()
-  static error(state: ReactorsStateModel): boolean {
-    return state.error;
+  static loadingLocationImage(state: ReactorsStateModel): boolean {
+    return state.loadingLocationImage;
+  }
+
+  @Selector()
+  static loadingReactorsImages(state: ReactorsStateModel): boolean {
+    return state.loadingReactorsImages;
+  }
+
+  @Selector()
+  static loadingSafetyStatus(state: ReactorsStateModel): boolean {
+    return state.loadingSafetyStatus;
+  }
+
+  @Selector()
+  static errorLocationImage(state: ReactorsStateModel): boolean {
+    return state.errorLocationImage;
+  }
+
+  @Selector()
+  static errorReactors(state: ReactorsStateModel): boolean {
+    return state.errorReactors;
+  }
+
+  @Selector()
+  static errorReactorsImages(state: ReactorsStateModel): boolean {
+    return state.errorReactorsImages;
+  }
+
+  @Selector()
+  static errorSafetyStatus(state: ReactorsStateModel): boolean {
+    return state.errorSafetyStatus;
   }
 
   @Action(FetchReactorsAction)
   fetchReactors(
     ctx: StateContext<ReactorsStateModel>
   ): Observable<ReactorsStateModel> | Observable<void> {
-    ctx.patchState({ loading: true });
+    ctx.patchState({ loadingReactors: true });
 
     return this.serviceReactors.getReactors().pipe(
       map((response) => {
-        return ctx.patchState({ reactors: response, loading: false });
+        return ctx.patchState({ reactors: response, loadingReactors: false });
       }),
-      catchError((err) => of(ctx.patchState({ error: true, loading: false })))
+      catchError((err) =>
+        of(ctx.patchState({ errorReactors: true, loadingReactors: false }))
+      )
     );
   }
 
@@ -84,16 +122,23 @@ export class ReactorsState {
   fetchReactorsSafetyStatus(
     ctx: StateContext<ReactorsStateModel>
   ): Observable<ReactorsStateModel> | Observable<void> {
-    ctx.patchState({ loading: true });
+    ctx.patchState({ loadingSafetyStatus: true });
 
     return this.serviceReactors.getReactorsSafetyStatus().pipe(
       map((response) => {
         return ctx.patchState({
           reactorsSafetyStatus: response,
-          loading: false,
+          loadingSafetyStatus: false,
         });
       }),
-      catchError((err) => of(ctx.patchState({ error: true, loading: false })))
+      catchError((err) =>
+        of(
+          ctx.patchState({
+            errorSafetyStatus: true,
+            loadingSafetyStatus: false,
+          })
+        )
+      )
     );
   }
 
@@ -101,16 +146,23 @@ export class ReactorsState {
   fetchReactorsImages(
     ctx: StateContext<ReactorsStateModel>
   ): Observable<ReactorsStateModel> | Observable<void> {
-    ctx.patchState({ loading: true });
+    ctx.patchState({ loadingReactorsImages: true });
 
     return this.serviceReactors.getReactorImagesList().pipe(
       map((response) => {
         return ctx.patchState({
           reactorsImages: response,
-          loading: false,
+          loadingReactorsImages: false,
         });
       }),
-      catchError((err) => of(ctx.patchState({ error: true, loading: false })))
+      catchError((err) =>
+        of(
+          ctx.patchState({
+            errorReactorsImages: true,
+            loadingReactorsImages: false,
+          })
+        )
+      )
     );
   }
 
@@ -118,16 +170,23 @@ export class ReactorsState {
   fetchReactorsLocationImage(
     ctx: StateContext<ReactorsStateModel>
   ): Observable<ReactorsStateModel> | Observable<void> {
-    ctx.patchState({ loading: true });
+    ctx.patchState({ loadingLocationImage: true });
 
     return this.serviceReactors.getReactorLocationImage().pipe(
       map((response) => {
         return ctx.patchState({
           locationsImage: response,
-          loading: false,
+          loadingLocationImage: false,
         });
       }),
-      catchError((err) => of(ctx.patchState({ error: true, loading: false })))
+      catchError((err) =>
+        of(
+          ctx.patchState({
+            errorLocationImage: true,
+            loadingLocationImage: false,
+          })
+        )
+      )
     );
   }
 }

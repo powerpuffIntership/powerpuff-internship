@@ -22,11 +22,13 @@ export class ReactorListPageComponent implements OnInit {
     'Pulvinar bibendum enim eget nullam lacus urna. Consequat lorem lectus imperdiet tincidunt. Orci magnis tempus tempus sit.';
 
   reactors$!: Observable<ReactorModel[]>;
+  loading$!: Observable<boolean>;
   WarningStyle = WarningStyle;
   Status = Status;
   constructor(private store: Store) {}
   ngOnInit(): void {
     this.store.dispatch(new FetchReactorsAction());
     this.reactors$ = this.store.select(ReactorsState.getReactors);
+    this.loading$ = this.store.select(ReactorsState.loadingReactors);
   }
 }

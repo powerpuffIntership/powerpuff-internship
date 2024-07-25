@@ -1,6 +1,6 @@
 <div class="image">
-    <img class="image__image" [src]="image.imageContent" [alt]="image.title" [width]="imageWidth"
-        [height]="imageHeight" />
-    <h3 class="image__title" *ngIf="style ==  ImageType.full">{{image.title}}</h3>
+    <img class="image__image" [src]="image.imageContent" [alt]="image.name ? image.name : image.title"
+        [width]="imageWidth" [height]="imageHeight" />
+    <h3 class="image__title" *ngIf="style ==  ImageType.full">{{image.name ? image.name : image.title}}</h3>
     <p class="image__description" *ngIf="style == ImageType.full">{{image.description}}</p>
 </div>
