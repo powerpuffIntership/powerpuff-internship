@@ -1,7 +1,8 @@
 <div class="carousel">
     <div class="carousel__container">
         <ng-container *ngFor="let img of elementsList; let i=index">
-            <app-image [image]="img" [style]="ImageType.full" *ngIf="i == counter"></app-image>
+            <app-image [image]="img" [style]="ImageType.full" *ngIf="i == counter" lass="carousel__container__image"
+                [imageWidth]="800" [imageHeight]="400"></app-image>
         </ng-container>
     </div>
 

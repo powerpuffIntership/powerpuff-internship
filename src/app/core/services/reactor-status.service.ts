@@ -34,7 +34,7 @@ export class ReactorStatusService {
     return this.http
       .get<ReactorModelDTO[]>(url)
       .pipe(map((response) => toReactorModel(response)));
-    return of(toReactorModel(dataReactor.list as ReactorModelDTO[]));
+    // return of(toReactorModel(dataReactor.list as ReactorModelDTO[]));
   }
 
   getReactorsSafetyStatus(): Observable<SafetyStatusModel> {

@@ -41,11 +41,21 @@ function toReactorChartDataModel(
   source?: ChartDataModelDTO[]
 ): ChartDataModel[] | void {
   if (source) {
+    if (source.length > 24) {
+      source.shift();
+    }
     return source.map((data) => {
       return {
         ...data,
+        time: formatDate(data.time),
         status: data.status ? (data.status as Status) : Status.inRange,
       };
     });
   }
+}
+
+function formatDate(dateString: string): string {
+  const date = new Date(dateString);
+
+  return date.getHours() + ':00';
 }

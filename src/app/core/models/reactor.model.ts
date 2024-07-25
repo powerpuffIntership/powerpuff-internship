@@ -16,7 +16,7 @@ export interface ReactorStatus {
 }
 
 export interface ChartDataModel {
-  time: number;
+  time: string;
   value: number;
   status: Status;
 }
@@ -36,7 +36,7 @@ export interface ReactorStatusDTO {
 }
 
 export interface ChartDataModelDTO {
-  time: number;
+  time: string;
   value: number;
   status: string;
 }

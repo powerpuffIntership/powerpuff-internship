@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Status } from '../../../core/enums/status.enum';
+import { ChartDataModel } from '../../../core/models/reactor.model';
 
 @Injectable({
   providedIn: 'root',
@@ -7,17 +8,15 @@ import { Status } from '../../../core/enums/status.enum';
 export class ChartService {
   constructor() {}
 
-  getColorsAndLabelsForChart(
-    chartData: { time: number; value: number; status: Status }[] | undefined
-  ): { colors: string[]; labels: number[] } {
+  getColorsAndLabelsForChart(chartData: ChartDataModel[] | undefined): {
+    colors: string[];
+    labels: number[];
+  } {
     let colors = [];
     let labels = [];
     if (chartData) {
       let maxValue = 0;
       for (var i = 0; i < chartData?.length; i++) {
-        if (maxValue < chartData[i].time) {
-          maxValue = chartData[i].time;
-        }
         var color;
         switch (chartData ? chartData[i].status : []) {
           case Status.critical:

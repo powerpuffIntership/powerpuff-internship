@@ -9,6 +9,7 @@ import { Chart } from 'chart.js/auto';
 import { ChartStatusComponent } from '../chart-status/chart-status.component';
 import { ChartService } from '../../services/chart.service';
 import { Status } from '../../../../core/enums/status.enum';
+import { ChartDataModel } from '../../../../core/models/reactor.model';
 
 @Component({
   selector: 'app-core-temperature-chart',
@@ -18,9 +19,7 @@ import { Status } from '../../../../core/enums/status.enum';
   styleUrl: './core-temperature-chart.component.scss',
 })
 export class CoreTemperatureChartComponent implements AfterViewInit {
-  @Input() chartData:
-    | { time: number; value: number; status: Status }[]
-    | undefined;
+  @Input() chartData: ChartDataModel[] | undefined;
   @Input() reactorId = '';
   @Input() reactorStatus = Status.inRange;
   chart: any = [];
@@ -65,8 +64,8 @@ export class CoreTemperatureChartComponent implements AfterViewInit {
           x: {
             grid: {
               display: false,
-            }
-          }
+            },
+          },
         },
         plugins: {
           tooltip: {
@@ -78,13 +77,14 @@ export class CoreTemperatureChartComponent implements AfterViewInit {
             padding: 8,
             boxPadding: 3,
             callbacks: {
-              title: function(tooltipItem){
+              title: function (tooltipItem) {
                 return '';
               },
-              label: function(tooltipItem){
+              label: function (tooltipItem) {
                 return tooltipItem.formattedValue + ' ºC';
-              }
-          }},
+              },
+            },
+          },
           title: {
             display: true,
             text: 'Core temperature',

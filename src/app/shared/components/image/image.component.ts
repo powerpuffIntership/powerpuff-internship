@@ -11,5 +11,9 @@ export class ImageComponent {
   @Input()
   image!: ImageModel;
   @Input() style: ImageType = ImageType.full;
+
+  @Input() imageHeight: number = 630;
+  @Input() imageWidth: number = 1260;
+
   ImageType = ImageType;
 }
