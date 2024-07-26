@@ -1,17 +1,36 @@
 @import "variables";
 
 .footer {
-  height: 30rem;
+  height: 34rem;
   width: 100%;
   left: 0;
   bottom: 0;
   background-color: #1e324f;
-
+  &__back-to-top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 16rem;
+    cursor: pointer;
+    &--arrow {
+      width: 3rem;
+      height: 3rem;
+      margin-right: 1rem;
+      background-repeat: no-repeat;
+      background-image: url(../../../../assets/icons/chevron_right.svg);
+    }
+    height: 4rem;
+    color: $white;
+    width: 100%;
+    background-color: $gray-blue;
+    font-size: $font-size-m;
+    font-weight: 400;
+  }
   &__container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 
-    padding: 1rem 15.6rem 0 15.6rem;
+    padding: 1rem 16rem 0 16rem;
     color: $white;
     font-size: 1.2rem;
     font-style: normal;

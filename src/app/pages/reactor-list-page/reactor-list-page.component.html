@@ -2,14 +2,15 @@
   <ng-container *ngFor="let reactor of reactors">
     <app-warning
       *ngIf="reactor.status.coreTempStatus !== Status.inRange || reactor.status.powerProdStatus !== Status.inRange"
-      [warningStyle]="WarningStyle.notification" [reactorStatus]="reactor"></app-warning>
+      [warningStyle]="WarningStyle.notification" [reactorStatus]="reactor"
+      (scrollToElement)="scrollToReactor(reactor.id)"></app-warning>
   </ng-container>
 
   <h1 class="reactor-list-page__title">Our reactors</h1>
   <h4 class="reactor-list-page__description">{{description}}</h4>
   <ng-container *ngIf="!(loading$ |async) else loading">
     <ng-container *ngFor="let reactor of reactors">
-      <app-reactor-component class="reactor-list-page__reactors" [reactorModel]="reactor">
+      <app-reactor-component class="reactor-list-page__reactors" [reactorModel]="reactor" [id]="reactor.id">
       </app-reactor-component>
     </ng-container>
   </ng-container>

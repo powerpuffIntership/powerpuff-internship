@@ -31,4 +31,10 @@ export class ReactorListPageComponent implements OnInit {
     this.reactors$ = this.store.select(ReactorsState.getReactors);
     this.loading$ = this.store.select(ReactorsState.loadingReactors);
   }
+
+  scrollToReactor(id: string) {
+    document
+      .getElementById(id)
+      ?.scrollIntoView({ block: 'end', behavior: 'smooth' });
+  }
 }
