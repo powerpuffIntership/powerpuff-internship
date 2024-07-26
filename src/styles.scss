@@ -22,3 +22,16 @@ body {
   font-size: $font-size-s;
   font-family: "Vattenfall Hall";
 }
+
+::-webkit-scrollbar {
+  width: 1.3rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $light-gray;
+  border-radius: 2rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $gray;
+}
