@@ -9,6 +9,7 @@ import { NgLetDirective } from './directives/ng-let.directive';
 import { HttpClientModule } from '@angular/common/http';
 import { LoaderComponent } from './components/loader/loader.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,12 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     NgLetDirective,
     LoaderComponent,
   ],
-  imports: [CommonModule, HttpClientModule, MatProgressSpinnerModule],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    MatProgressSpinnerModule,
+    TranslateModule,
+  ],
   exports: [
     CustomBtnComponent,
     LegendComponent,
@@ -30,6 +36,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     NgLetDirective,
     HttpClientModule,
     LoaderComponent,
+    TranslateModule,
   ],
 })
 export class SharedModule {}

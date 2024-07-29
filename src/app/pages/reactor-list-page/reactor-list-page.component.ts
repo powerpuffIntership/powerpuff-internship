@@ -17,10 +17,6 @@ import { WarningStyle } from '../../core/enums/warningStyle.enum';
   styleUrl: './reactor-list-page.component.scss',
 })
 export class ReactorListPageComponent implements OnInit {
-  description =
-    'Lorem ipsum dolor sit amet consectetur. Adipiscing non pulvinar placerat lorem ullamcorper magna. ' +
-    'Pulvinar bibendum enim eget nullam lacus urna. Consequat lorem lectus imperdiet tincidunt. Orci magnis tempus tempus sit.';
-
   reactors$!: Observable<ReactorModel[]>;
   loading$!: Observable<boolean>;
   WarningStyle = WarningStyle;
