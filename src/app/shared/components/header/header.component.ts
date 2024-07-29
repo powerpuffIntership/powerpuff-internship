@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     const currentLocation = window.location.href;
-    if (!currentLocation.includes('welcome')) {
+    if (currentLocation.includes('reactors')) {
       this.isHome = of(false);
     }
   }

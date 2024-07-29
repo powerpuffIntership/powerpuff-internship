@@ -57,5 +57,5 @@ function toReactorChartDataModel(
 function formatDate(dateString: string): string {
   const date = new Date(dateString);
 
-  return date.getHours() + ':00';
+  return date.getHours().toString();
 }

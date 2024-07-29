@@ -35,3 +35,10 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: $gray;
 }
+
+a,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+}

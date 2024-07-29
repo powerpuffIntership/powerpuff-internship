@@ -16,10 +16,21 @@
     font-weight: 500;
     line-height: 3.6rem;
   }
-  &__status__section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 100%;
-    column-gap: 0.5rem;
+  &__status {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: 100%;
+      column-gap: 0.5rem;
+      &--full {
+        grid-template-columns: 1fr;
+        width: 65%;
+      }
+    }
   }
 }

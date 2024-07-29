@@ -58,10 +58,22 @@ export class PowerProductionChartComponent implements AfterViewInit {
           xAxisKey: 'time',
           yAxisKey: 'value',
         },
+
         scales: {
           x: {
+            ticks: {
+              color: '#000000',
+              font: { family: 'Vattenfall Hall', size: 14 },
+            },
             grid: {
               display: false,
+            },
+          },
+          y: {
+            ticks: {
+              color: '#000000',
+
+              font: { family: 'Vattenfall Hall', size: 14 },
             },
           },
         },

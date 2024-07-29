@@ -5,7 +5,7 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { Chart } from 'chart.js/auto';
+import { Chart, ScriptableLineSegmentContext } from 'chart.js/auto';
 import { ChartStatusComponent } from '../chart-status/chart-status.component';
 import { ChartService } from '../../services/chart.service';
 import { Status } from '../../../../core/enums/status.enum';
@@ -31,10 +31,12 @@ export class CoreTemperatureChartComponent implements AfterViewInit {
   ) {}
 
   ngAfterViewInit() {
+    const ctx = 'core-temperature-chart' + this.reactorId;
     this.dataForChart = this.chartService.getColorsAndLabelsForChart(
       this.chartData
     );
-    this.chart = new Chart('core-temperature-chart' + this.reactorId, {
+    console.log(this.dataForChart);
+    this.chart = new Chart(ctx, {
       type: 'line',
       data: {
         labels: this.dataForChart.labels,
@@ -48,6 +50,12 @@ export class CoreTemperatureChartComponent implements AfterViewInit {
             backgroundColor: this.dataForChart.colors,
             fill: false,
             tension: 0.2,
+            segment: {
+              backgroundColor: (ctx) =>
+                getSegmentColor(ctx, this.dataForChart.colors),
+              borderColor: (ctx) =>
+                getSegmentColor(ctx, this.dataForChart.colors),
+            },
           },
         ],
       },
@@ -62,8 +70,20 @@ export class CoreTemperatureChartComponent implements AfterViewInit {
         },
         scales: {
           x: {
+            ticks: {
+              color: '#000000',
+
+              font: { family: 'Vattenfall Hall', size: 14 },
+            },
             grid: {
               display: false,
+            },
+          },
+          y: {
+            ticks: {
+              color: '#000000',
+
+              font: { family: 'Vattenfall Hall', size: 14 },
             },
           },
         },
@@ -83,6 +103,9 @@ export class CoreTemperatureChartComponent implements AfterViewInit {
               label: function (tooltipItem) {
                 return tooltipItem.formattedValue + ' ºC';
               },
+            },
+            footerFont: {
+              family: 'Vattenfall Hall',
             },
           },
           title: {
@@ -104,6 +127,15 @@ export class CoreTemperatureChartComponent implements AfterViewInit {
         },
       },
     });
+
     this.cdr.detectChanges();
   }
+}
+function getSegmentColor(
+  ctx: ScriptableLineSegmentContext,
+  dataForChart: string[]
+): any {
+  let point = ctx.p1;
+  console.log(point);
+  return dataForChart[point.parsed.x - 1];
 }
