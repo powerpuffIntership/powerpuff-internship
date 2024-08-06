@@ -18,10 +18,17 @@ export class HeaderComponent {
         htmlElement.className = "header-icon__wrapper__reactorIcon";
         htmlElement.setAttribute("href","#welcome")
       }
-    }else{
+    }else{      // we are on main
       if(inactiveElement = document.getElementById("wrapperLink")){
         inactiveElement.setAttribute("disabled", "disabled");
         inactiveElement.removeAttribute("href");
+      }
+      if(htmlElement = document.getElementById("headerIcon")){
+        htmlElement.removeAttribute("href");
+      }
+      if(htmlElement = document.getElementById("headerIconLink")){
+        htmlElement.removeAttribute("href");
+        htmlElement.setAttribute("disabled", "disabled");
       }
     }
   }
