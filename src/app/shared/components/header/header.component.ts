@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { State } from '@ngxs/store';
 import { Routes } from '@angular/router';
+import {Location} from '@angular/common'
 
 @Component({
   selector: 'app-header',
@@ -9,20 +10,20 @@ import { Routes } from '@angular/router';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+  constructor(private location:Location){}
   ngOnInit() {
-    let location:string = window.location.href;
-    if(location.includes("reactors")){
-      var htmlElement;
-      var inactiveElement;
+    let myLocation:string = this.location.path()
+    let htmlElement;
+    let inactiveElement;
+    if(myLocation.includes("reactors")){
       if(htmlElement = document.getElementById("headerIcon")){
         htmlElement.className = "header-icon__wrapper__reactorIcon";
-        htmlElement.setAttribute("href","#welcome")
+        htmlElement.setAttribute("href","#welcome");
+      }
+      if(htmlElement = document.getElementById("headerIconText")){
+        htmlElement.innerHTML = "Return home";
       }
     }else{      // we are on main
-      if(inactiveElement = document.getElementById("wrapperLink")){
-        inactiveElement.setAttribute("disabled", "disabled");
-        inactiveElement.removeAttribute("href");
-      }
       if(htmlElement = document.getElementById("headerIcon")){
         htmlElement.removeAttribute("href");
       }

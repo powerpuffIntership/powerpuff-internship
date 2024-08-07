@@ -11,7 +11,13 @@
   &-icon__wrapper {
     display: flex;
     align-items: center;
+    width: 15rem;
 
+    &__text{
+      width: 5rem;
+      display: inline-block;
+      text-wrap: nowrap;
+    }
     &__link {
       color: black;
       text-decoration: none;
@@ -27,12 +33,12 @@
     }
 
     &__reactorIcon {
-      width: 25px;
-      height: 22.569px;
+      width: 2.5rem;
+      height: 2.25rem;
       display: inline-block;
       background-image: url("../../../../assets/icons/arrow-left.svg");
       margin-right: 1rem;
-      fill: var(--Ocean-Blue, #2071B5);
+      fill: $ocean-blue;
       cursor: pointer;
       filter: invert(33%) sepia(83%) saturate(828%) hue-rotate(175deg)
         brightness(93%) contrast(88%);
@@ -41,7 +47,7 @@
   }
 
   &__logo {
-    width: 144rem;
+    width: 134rem;
     height: 9rem;
   }
 }
