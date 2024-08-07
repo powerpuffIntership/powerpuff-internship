@@ -15,9 +15,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
     CoreTemperatureChartComponent,
     ChartStatusComponent,
     SharedModule,
-    UsefulLinksComponent,
-    RouterLink,
-    RouterOutlet
+    UsefulLinksComponent
   ],
   templateUrl: './reactor-component.component.html',
   styleUrl: './reactor-component.component.scss',
