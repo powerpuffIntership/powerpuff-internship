@@ -5,7 +5,6 @@ import { ChartStatusComponent } from '../chart-status/chart-status.component';
 import { SharedModule } from '../../../../shared/shared.module';
 import { UsefulLinksComponent } from '../useful-links/useful-links.component';
 import { ReactorModel } from '../../../../core/models/reactor.model';
-import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-reactor-component',
