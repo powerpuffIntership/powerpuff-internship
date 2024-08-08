@@ -7,6 +7,7 @@ import {
   ReactorStatus,
   ReactorStatusDTO,
 } from '../models/reactor.model';
+import { SafetyStatusDTO, SafetyStatusModel } from '../models/safetyStatus.model';
 
 export function toReactorModel(source: ReactorModelDTO[]): ReactorModel[] {
   return source.map((reactor) => {
@@ -26,7 +27,7 @@ export function toReactorModel(source: ReactorModelDTO[]): ReactorModel[] {
   }) as ReactorModel[];
 }
 
-function toReactorStatusModel(source: ReactorStatusDTO): ReactorStatus {
+export function toReactorStatusModel(source: ReactorStatusDTO): ReactorStatus {
   return {
     coreTempStatus: source.coreTempStatus
       ? (source.coreTempStatus as Status)
@@ -36,7 +37,17 @@ function toReactorStatusModel(source: ReactorStatusDTO): ReactorStatus {
       : Status.inRange,
   };
 }
-
+export function toSafetyStatusModel(source: SafetyStatusDTO): SafetyStatusModel {
+  return {
+    sectionInfo: source.sectionInfo,
+    statusPowerProduction: source.statusPowerProduction
+      ? (source.statusPowerProduction as Status)
+      : Status.inRange,
+    statusCoreTemperature: source.statusCoreTemperature
+      ? (source.statusCoreTemperature as Status)
+      : Status.inRange,
+  };
+}
 function toReactorChartDataModel(
   source?: ChartDataModelDTO[]
 ): ChartDataModel[] | void {
