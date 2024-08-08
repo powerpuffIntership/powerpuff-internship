@@ -21,6 +21,8 @@
     &__link {
       color: black;
       text-decoration: none;
+      display: flex;
+      align-items: center;
     }
 
     &__icon {
