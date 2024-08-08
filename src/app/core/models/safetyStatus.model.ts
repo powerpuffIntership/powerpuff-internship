@@ -5,5 +5,9 @@ export interface SafetyStatusModel {
   sectionInfo: string;
   statusPowerProduction: Status;
   statusCoreTemperature: Status;
-  extendedStatus?: ReactorModel;
+}
+export interface SafetyStatusDTO{
+  sectionInfo: string;
+  statusPowerProduction: Status;
+  statusCoreTemperature: Status;
 }

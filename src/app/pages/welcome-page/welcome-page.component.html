@@ -9,7 +9,8 @@
     <h2>Safety system status</h2>
     <p class="welcome__paragraph">Lorem ipsum dolor sit amet consectetur. Adipiscing non pulvinar placerat lorem
       ullamcorper magna. Pulvinar bibendum enim.</p>
-    <div class="welcome__status__section">
+    <div class="welcome__status__section" [style.grid-template-columns]="data.safetyStatus.statusPowerProduction == Status.inRange
+     || data.safetyStatus.statusCoreTemperature == Status.inRange ? '1fr' : '1fr 1 fr'">
       <app-status class="welcome__status__section__status-container" [status]="data.safetyStatus"></app-status>
       <app-warning
         *ngIf="data.safetyStatus.statusPowerProduction !== Status.inRange || data.safetyStatus.statusCoreTemperature !== Status.inRange"

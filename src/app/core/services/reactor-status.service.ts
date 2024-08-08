@@ -7,8 +7,8 @@ import * as dataImage from '../../../assets/mocks/images.json';
 
 import { ReactorModel, ReactorModelDTO } from '../models/reactor.model';
 import { Status } from '../enums/status.enum';
-import { SafetyStatusModel } from '../models/safetyStatus.model';
-import { toReactorModel } from '../mappers/reactor-model.mapper';
+import { SafetyStatusDTO, SafetyStatusModel } from '../models/safetyStatus.model';
+import { toReactorModel, toSafetyStatusModel } from '../mappers/reactor-model.mapper';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -16,11 +16,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ReactorStatusService {
   environments = {
-    baseUrl: 'https://powerpuffintershipbe.azurewebsites.net/api',
+    baseUrl: 'https://localhost:7153/api',
     reactorImageList: '/Reactor/image-list',
     reactorList: '/Reactor',
-    locationImage: '/Image/get-image/Locations.png'
-    
+    locationImage: '/Image/get-image/Locations.png',
+    reactorStatus: '/Reactor/status'
   };
 
   constructor(private http: HttpClient) {}
@@ -36,17 +36,14 @@ export class ReactorStatusService {
     return this.http
       .get<ReactorModelDTO[]>(url)
       .pipe(map((response) => toReactorModel(response)));
-    return of(toReactorModel(dataReactor.list as ReactorModelDTO[]));
+    // return of(toReactorModel(dataReactor.list as ReactorModelDTO[]));
   }
 
   getReactorsSafetyStatus(): Observable<SafetyStatusModel> {
-    const data = {
-      ...dataReactor.status,
-      statusPowerProduction: dataReactor.status.statusPowerProduction as Status,
-      statusCoreTemperature: dataReactor.status.statusCoreTemperature as Status,
-    };
-
-    return of(data);
+    const url = this.environments.baseUrl + this.environments.reactorStatus;
+    return this.http
+      .get<SafetyStatusDTO>(url)
+      .pipe(map((response) => toSafetyStatusModel(response)));
   }
 
   getReactorLocationImage(): Observable<ImageModel> {
