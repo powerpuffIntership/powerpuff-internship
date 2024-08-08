@@ -14,7 +14,7 @@ import { ReactorModel } from '../../../../core/models/reactor.model';
     CoreTemperatureChartComponent,
     ChartStatusComponent,
     SharedModule,
-    UsefulLinksComponent,
+    UsefulLinksComponent
   ],
   templateUrl: './reactor-component.component.html',
   styleUrl: './reactor-component.component.scss',
