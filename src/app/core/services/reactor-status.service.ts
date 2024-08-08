@@ -19,6 +19,8 @@ export class ReactorStatusService {
     baseUrl: 'https://powerpuffintershipbe.azurewebsites.net/api',
     reactorImageList: '/Reactor/image-list',
     reactorList: '/Reactor',
+    locationImage: '/Image/get-image/Locations.png'
+    
   };
 
   constructor(private http: HttpClient) {}
@@ -48,6 +50,7 @@ export class ReactorStatusService {
   }
 
   getReactorLocationImage(): Observable<ImageModel> {
-    return of(dataImage.data);
+    const url = this.environments.baseUrl + this.environments.locationImage;
+    return this.http.get<ImageModel>(url);
   }
 }
