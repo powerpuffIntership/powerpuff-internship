@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Status } from '../../../core/enums/status.enum';
 import { SafetyStatusModel } from '../../../core/models/safetyStatus.model';
 import { ReactorModel } from '../../../core/models/reactor.model';
@@ -13,10 +13,13 @@ export class WarningComponent implements OnInit {
   @Input() safetyStatus?: SafetyStatusModel;
   @Input() reactorStatus?: ReactorModel;
   @Input() warningStyle?: WarningStyle = WarningStyle.standard;
+  @Output() scrollToElement = new EventEmitter<any>();
+
   typeOfError?: string;
   reactorName?: string;
   warningType: Status = Status.outOfRange;
   WarningStyle = WarningStyle;
+
   ngOnInit() {
     console.log(this.safetyStatus);
     if (!!this.safetyStatus) {
@@ -37,6 +40,13 @@ export class WarningComponent implements OnInit {
         this.typeOfError = 'Power production output ';
         this.warningType = this.reactorStatus.status.powerProdStatus;
       }
+    }
+  }
+
+  goToReactor(event: Event): void {
+    if (this.reactorStatus) {
+      event.preventDefault();
+      this.scrollToElement.emit(this.reactorStatus.id);
     }
   }
 }

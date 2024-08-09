@@ -29,4 +29,10 @@ export class ReactorListPageComponent implements OnInit {
     this.store.dispatch(new FetchReactorsAction());
     this.reactors$ = this.store.select(ReactorsState.getReactors);
   }
+
+  scrollToReactor(id: string): void {
+    document
+      .getElementById(id)
+      ?.scrollIntoView({ block: 'end', behavior: 'smooth' });
+  }
 }

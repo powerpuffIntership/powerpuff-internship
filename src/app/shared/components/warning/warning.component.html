@@ -7,7 +7,7 @@
             }}</span> has exeeded safe levels. Urgent attention
         required.
         <br *ngIf="warningStyle == WarningStyle.standard">
-        <a href="reactors" class="warning__link">See details</a>
+        <a href="reactors" class="warning__link" (click)="goToReactor($event)">See details</a>
     </div>
 
 </div>

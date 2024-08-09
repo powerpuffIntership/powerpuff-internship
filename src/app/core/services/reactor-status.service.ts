@@ -19,8 +19,7 @@ export class ReactorStatusService {
     baseUrl: 'https://powerpuffintershipbe.azurewebsites.net/api',
     reactorImageList: '/Reactor/image-list',
     reactorList: '/Reactor',
-    locationImage: '/Image/get-image/Locations.png'
-    
+    locationImage: '/Image/get-image/Locations.png',
   };
 
   constructor(private http: HttpClient) {}
@@ -36,7 +35,6 @@ export class ReactorStatusService {
     return this.http
       .get<ReactorModelDTO[]>(url)
       .pipe(map((response) => toReactorModel(response)));
-    return of(toReactorModel(dataReactor.list as ReactorModelDTO[]));
   }
 
   getReactorsSafetyStatus(): Observable<SafetyStatusModel> {

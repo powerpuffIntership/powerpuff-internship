@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { CustomBtnComponent } from './components/custom-btn/custom-btn.component';
 import { LegendComponent } from './components/legend/legend.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
@@ -12,8 +10,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    HeaderComponent,
-    FooterComponent,
     CustomBtnComponent,
     LegendComponent,
     CarouselComponent,
@@ -23,8 +19,6 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [CommonModule, HttpClientModule],
   exports: [
-    HeaderComponent,
-    FooterComponent,
     CustomBtnComponent,
     LegendComponent,
     CarouselComponent,

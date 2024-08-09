@@ -19,7 +19,7 @@ import { Status } from '../../../../core/enums/status.enum';
 })
 export class PowerProductionChartComponent implements AfterViewInit {
   @Input() chartData:
-    | { time: number; value: number; status: Status }[]
+    | { time: string; value: number; status: Status }[]
     | undefined = [];
   @Input() reactorId = '';
   @Input() reactorStatus = Status.inRange;
@@ -63,8 +63,8 @@ export class PowerProductionChartComponent implements AfterViewInit {
           x: {
             grid: {
               display: false,
-            }
-          }
+            },
+          },
         },
         plugins: {
           tooltip: {
@@ -76,13 +76,14 @@ export class PowerProductionChartComponent implements AfterViewInit {
             padding: 8,
             boxPadding: 3,
             callbacks: {
-              title: function(tooltipItem){
+              title: function (tooltipItem) {
                 return '';
               },
-              label: function(tooltipItem){
+              label: function (tooltipItem) {
                 return tooltipItem.formattedValue + ' MW';
-              }
-            }},
+              },
+            },
+          },
           title: {
             display: true,
             text: 'Power production output',
